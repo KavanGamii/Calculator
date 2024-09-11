@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Calculator</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h3>Created By: Kavan Gami</h3>
+      <h2>Botam Calculator</h2>
+
+      <!-- Input Sections -->
+      <div class="input-section">
+        <label for="inputValue1">A:</label>
+        <input type="number" id="inputValue1" placeholder="Enter a number" />
+        <p>9.4 * Value 1 = <span id="result1">0</span></p>
+      </div>
+
+      <div class="input-section">
+        <label for="inputValue2">B:</label>
+        <input type="number" id="inputValue2" placeholder="Enter a number" />
+        <p>11.25 * Value 2 = <span id="result2">0</span></p>
+      </div>
+
+      <div class="input-section">
+        <label for="inputValue3">C:</label>
+        <input type="number" id="inputValue3" placeholder="Enter a number" />
+        <p>13.5 * Value 3 = <span id="result3">0</span></p>
+      </div>
+
+      <div class="input-section">
+        <label for="inputValue4">D:</label>
+        <input type="number" id="inputValue4" placeholder="Enter a number" />
+        <p>16.2 * Value 4 = <span id="result4">0</span></p>
+      </div>
+
+      <!-- Button to Trigger Calculation -->
+      <button onclick="calculate()">Total</button>
+
+      <!-- Final Total Display -->
+      <div id="finalTotal"><strong>Total: 0</strong></div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
