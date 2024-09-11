@@ -1,28 +1,58 @@
+// Function to calculate total for each row and the grand total
 function calculate() {
-  // Get user input values, defaulting to 0 if the input is empty
-  const value1 = parseFloat(document.getElementById('inputValue1').value) || 0;
-  const value2 = parseFloat(document.getElementById('inputValue2').value) || 0;
-  const value3 = parseFloat(document.getElementById('inputValue3').value) || 0;
-  const value4 = parseFloat(document.getElementById('inputValue4').value) || 0;
+  const rows = document.querySelectorAll('#tableBody tr');
+  let grandTotal = 0;
 
-  // Perform calculations
-  const result1 = (9.4 * value1).toFixed(2);
-  const result2 = (11.25 * value2).toFixed(2);
-  const result3 = (13.5 * value3).toFixed(2);
-  const result4 = (16.2 * value4).toFixed(2);
-  const total = (
-    parseFloat(result1) +
-    parseFloat(result2) +
-    parseFloat(result3) +
-    parseFloat(result4)
-  ).toFixed(2);
+  rows.forEach((row) => {
+    const inputs = row.querySelectorAll("input[type='number']");
+    let total = 0;
+    const values = [9.4, 11.25, 13.5, 16.2];
 
-  // Display results
-  document.getElementById('result1').textContent = result1;
-  document.getElementById('result2').textContent = result2;
-  document.getElementById('result3').textContent = result3;
-  document.getElementById('result4').textContent = result4;
-  document.getElementById(
-    'finalTotal'
-  ).innerHTML = `<strong>Total: ${total}</strong>`;
+    inputs.forEach((input, index) => {
+      const value = parseFloat(input.value) || 0;
+      total += value * values[index];
+    });
+
+    row.querySelector('.total').innerText = total.toFixed(2); // Display total with 2 decimal points
+    grandTotal += total; // Accumulate the total to grand total
+  });
+
+  // Update grand total
+  document.getElementById('grandTotal').innerText = grandTotal.toFixed(2);
 }
+
+// Function to add a new row
+function addRow() {
+  const tableBody = document.getElementById('tableBody');
+  const row = document.createElement('tr');
+
+  // Name input
+  row.innerHTML = `
+      <td><input type="text" placeholder="Enter name"></td>
+      <td><input type="number" placeholder="0"></td>
+      <td><input type="number" placeholder="0"></td>
+      <td><input type="number" placeholder="0"></td>
+      <td><input type="number" placeholder="0"></td>
+      <td class="total">0.00</td>
+      <td><button onclick="deleteRow(this)">Delete</button></td>
+  `;
+  tableBody.appendChild(row);
+}
+
+// Function to delete a row
+function deleteRow(button) {
+  button.parentElement.parentElement.remove();
+  calculate(); // Recalculate after deletion
+}
+
+// Function to print the table as a PDF
+function printPDF() {
+  const printContents = document.querySelector('.container').innerHTML;
+  const originalContents = document.body.innerHTML;
+  document.body.innerHTML = printContents;
+  window.print();
+  document.body.innerHTML = originalContents;
+}
+
+// Initialize with one row
+addRow();

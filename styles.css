@@ -1,0 +1,118 @@
+/* General reset for margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Styling for the body */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f4f8;
+  padding: 20px;
+}
+
+/* Main container styling */
+.container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  text-align: center;
+  overflow-x: auto; /* Enables horizontal scrolling for small screens */
+}
+
+/* Table styling */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  min-width: 600px;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+td input {
+  width: 100%;
+  padding: 6px;
+  font-size: 14px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+    max-width: 100%;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 8px;
+  }
+
+  td input {
+    font-size: 12px;
+  }
+
+  /* Horizontal scrolling for the table */
+  .container {
+    overflow-x: auto;
+  }
+}
+
+/* Button styling */
+button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+  margin: 5px 0;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+  transform: scale(1.05);
+}
+
+/* Specific button styling */
+.add-row,
+.print-pdf {
+  width: 100%;
+  margin-top: 10px;
+}
+tfoot td {
+  font-weight: bold;
+  padding: 12px 10px;
+  border: 1px solid #ddd;
+  text-align: center;
+  background-color: #f2f2f2;
+}
