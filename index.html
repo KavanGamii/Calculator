@@ -8,7 +8,8 @@
   </head>
   <body>
     <div class="container">
-      <h2>Data Calculator</h2>
+      <h1>Created By:Kavan Gami</h1>
+      <h2>Botam Calculator</h2>
       <table>
         <thead>
           <tr>
@@ -36,9 +37,14 @@
         </tfoot>
       </table>
 
-      <button onclick="calculate()" class="calculate">Evaluate Now</button>
-      <button onclick="addRow()" class="add-row">Add Row</button>
-      <button onclick="printPDF()" class="print-pdf">Print as PDF</button>
+      <!-- Buttons with print-hide class to hide during printing -->
+      <button onclick="calculate()" class="calculate print-hide">
+        Evaluate Now
+      </button>
+      <button onclick="addRow()" class="add-row print-hide">Add Row</button>
+      <button onclick="printPDF()" class="print-pdf print-hide">
+        Print as PDF
+      </button>
     </div>
     <script src="script.js"></script>
   </body>

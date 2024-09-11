@@ -4,7 +4,12 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+h1 {
+  font-size: 6px;
+}
+h2 {
+  padding-bottom: 10px;
+}
 /* Styling for the body */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -115,4 +120,50 @@ tfoot td {
   border: 1px solid #ddd;
   text-align: center;
   background-color: #f2f2f2;
+}
+
+/* Print-specific styles */
+@media print {
+  button,
+  .print-hide {
+    display: none;
+  }
+  td input {
+    border: 1px transparent;
+  }
+  tfoot {
+    display: table-footer-group;
+  }
+
+  /* Hide the Action column during print */
+  th:nth-child(7), /* Hides the Action header */
+  td:nth-child(7) {
+    /* Hides the Action cells */
+    display: none;
+  }
+
+  /* Keep borders for table, but remove borders around input fields during print */
+  table,
+  th,
+  td {
+    border: 1px solid #000; /* Keeps the table borders */
+    border-collapse: collapse;
+  }
+
+  /* Remove borders around input fields during print */
+  input {
+    border: none;
+  }
+
+  /* Add border to the "Grand Total" section */
+  tfoot td {
+    border-top: 1px solid #000;
+    font-weight: bold; /* To highlight the Grand Total section */
+  }
+
+  /* Hide any extra columns */
+  th:nth-child(n+8), /* Hides any unexpected columns that might appear */
+  td:nth-child(n+8) {
+    display: none;
+  }
 }

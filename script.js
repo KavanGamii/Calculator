@@ -56,3 +56,6 @@ function printPDF() {
 
 // Initialize with one row
 addRow();
+function printPDF() {
+  window.print();
+}
