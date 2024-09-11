@@ -101,11 +101,14 @@ button {
   transition: background-color 0.3s, transform 0.2s;
   margin: 5px 0;
   width: 100%;
+  border: 2px solid #4caf50;
+  transition: 0.4s;
+  font-weight: 700;
 }
 
 button:hover {
-  background-color: #45a049;
-  transform: scale(1.05);
+  background: transparent;
+  color: black;
 }
 
 /* Specific button styling */
@@ -134,7 +137,9 @@ tfoot td {
   tfoot {
     display: table-footer-group;
   }
-
+  h1 {
+    display: none;
+  }
   /* Hide the Action column during print */
   th:nth-child(7), /* Hides the Action header */
   td:nth-child(7) {
@@ -157,7 +162,7 @@ tfoot td {
 
   /* Add border to the "Grand Total" section */
   tfoot td {
-    border-top: 1px solid #000;
+    border: 1px solid #000;
     font-weight: bold; /* To highlight the Grand Total section */
   }
 
