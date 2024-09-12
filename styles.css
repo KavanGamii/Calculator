@@ -14,25 +14,53 @@ body {
   min-height: 100vh;
   background-color: #f0f4f8;
   padding: 20px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
 }
 
 /* Header and date picker styling */
 .header {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start; /* Align items to the left */
   align-items: center;
   width: 100%;
   margin-bottom: 10px;
 }
 
-.date-picker {
+.left-controls {
+  display: flex;
+  align-items: center;
+}
+
+.date-picker-container {
   font-size: 14px;
+  margin-left: 10px; /* Space between theme button and date picker */
 }
 
 h1 {
   font-size: 16px;
   color: #333;
   text-align: right;
+}
+
+/* Small circular button styling */
+.theme-toggle {
+  width: 30px;
+  height: 30px;
+  background-color: #f0f4f8;
+  color: #333;
+  border: 2px solid #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, color 0.3s;
+}
+
+.theme-toggle:hover {
+  background-color: #333;
+  color: #f0f4f8;
+  transform: rotate(45deg);
 }
 
 /* Main container styling */
@@ -45,6 +73,7 @@ h1 {
   max-width: 800px;
   text-align: center;
   overflow-x: auto;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
 }
 
 /* Table styling */
@@ -137,7 +166,6 @@ button:hover {
   .print-only {
     display: table-cell;
     border: 1px solid #000; /* Ensures borders for extra columns during print */
-    width: auto; /* Equal width for extra columns */
   }
 
   td input {
@@ -168,4 +196,46 @@ button:hover {
     border: 1px solid #000;
     font-weight: bold;
   }
+}
+
+/* Hide extra columns in normal view */
+.print-only {
+  display: none;
+}
+
+/* Improved Dark Theme Styles */
+body.dark {
+  background-color: #1e1e2e;
+  color: #e0e0e0;
+}
+
+.container.dark {
+  background-color: #2e2e3a;
+  color: #e0e0e0;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+}
+
+table.dark {
+  color: #e0e0e0;
+}
+
+th.dark,
+td.dark {
+  border-color: #3a3a4a;
+}
+
+th.dark {
+  background-color: #3a3a4a;
+}
+
+button.dark {
+  background-color: #3a3a4a;
+  color: #e0e0e0;
+  border-color: #4a4a5a;
+}
+
+.theme-toggle.dark {
+  background-color: #4a4a5a;
+  color: #e0e0e0;
+  border-color: #5a5a6a;
 }

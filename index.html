@@ -8,16 +8,25 @@
   </head>
   <body>
     <div class="container">
-      <!-- Header section with date picker -->
+      <!-- Header section for date picker and theme switcher -->
       <div class="header">
-        <div class="date-picker">
-          <label for="date">Date:</label>
-          <input type="date" id="date" />
+        <!-- Move Date Picker and Theme Toggle to Left Side -->
+        <div class="left-controls">
+          <button
+            onclick="toggleTheme()"
+            class="theme-toggle print-hide"
+            title="Switch Theme"
+          >
+            ☀️
+          </button>
+          <div class="date-picker-container">
+            <label for="date-picker">Date:</label>
+            <input type="date" id="date-picker" />
+          </div>
         </div>
-        <h1>Created By: Kavan Gami</h1>
       </div>
 
-      <h2>Botam Total</h2>
+      <h2>Total</h2>
       <table>
         <thead>
           <tr>
@@ -27,15 +36,30 @@
             <th>C (13.50x)</th>
             <th>D (16.20x)</th>
             <th>Total</th>
-            <th class="print-hide">Delete</th>
-            <!-- Hide the Delete column while printing -->
-            <!-- New columns only for print -->
+            <th>Delete</th>
+            <!-- Extra columns for print only -->
             <th class="print-only">Extra 1</th>
             <th class="print-only">Extra 2</th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          <!-- Rows will be dynamically generated here -->
+          <!-- Initial row example -->
+          <tr>
+            <td><input type="text" placeholder="Enter name" /></td>
+            <td><input type="number" placeholder="0" /></td>
+            <td><input type="number" placeholder="0" /></td>
+            <td><input type="number" placeholder="0" /></td>
+            <td><input type="number" placeholder="0" /></td>
+            <td class="total">0.00</td>
+            <td>
+              <button onclick="deleteRow(this)" class="print-hide">
+                Delete
+              </button>
+            </td>
+            <!-- Extra columns for print only -->
+            <td class="print-only"></td>
+            <td class="print-only"></td>
+          </tr>
         </tbody>
         <tfoot>
           <tr>
@@ -43,9 +67,8 @@
               Grand Total:
             </td>
             <td id="grandTotal">0.00</td>
-            <!-- Extra cells for print -->
-            <td class="print-hide"></td>
-            <!-- Hides delete column in print -->
+            <td></td>
+            <!-- Extra columns for print only in footer -->
             <td class="print-only"></td>
             <td class="print-only"></td>
           </tr>
