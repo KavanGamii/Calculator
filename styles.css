@@ -4,12 +4,7 @@
   padding: 0;
   box-sizing: border-box;
 }
-h1 {
-  font-size: 6px;
-}
-h2 {
-  padding-bottom: 10px;
-}
+
 /* Styling for the body */
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -21,6 +16,25 @@ body {
   padding: 20px;
 }
 
+/* Header and date picker styling */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.date-picker {
+  font-size: 14px;
+}
+
+h1 {
+  font-size: 16px;
+  color: #333;
+  text-align: right;
+}
+
 /* Main container styling */
 .container {
   background-color: #ffffff;
@@ -30,34 +44,34 @@ body {
   width: 100%;
   max-width: 800px;
   text-align: center;
-  overflow-x: auto; /* Enables horizontal scrolling for small screens */
+  overflow-x: auto;
 }
 
 /* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   min-width: 600px;
 }
 
 th,
 td {
-  padding: 12px 10px;
+  padding: 8px;
   border: 1px solid #ddd;
   text-align: center;
   font-size: 14px;
 }
 
 th {
-  background-color: #f2f2f2;
-  color: #333;
+  background-color: #4caf50;
+  color: white;
 }
 
 td input {
   width: 100%;
-  padding: 6px;
-  font-size: 14px;
+  padding: 4px;
+  font-size: 12px;
   text-align: center;
   border-radius: 4px;
   border: 1px solid #ddd;
@@ -76,16 +90,11 @@ td input {
 
   th,
   td {
-    padding: 8px;
+    padding: 6px;
   }
 
   td input {
     font-size: 12px;
-  }
-
-  /* Horizontal scrolling for the table */
-  .container {
-    overflow-x: auto;
   }
 }
 
@@ -117,13 +126,6 @@ button:hover {
   width: 100%;
   margin-top: 10px;
 }
-tfoot td {
-  font-weight: bold;
-  padding: 12px 10px;
-  border: 1px solid #ddd;
-  text-align: center;
-  background-color: #f2f2f2;
-}
 
 /* Print-specific styles */
 @media print {
@@ -131,44 +133,39 @@ tfoot td {
   .print-hide {
     display: none;
   }
+
+  .print-only {
+    display: table-cell;
+    border: 1px solid #000; /* Ensures borders for extra columns during print */
+    width: auto; /* Equal width for extra columns */
+  }
+
   td input {
     border: 1px transparent;
   }
+
   tfoot {
     display: table-footer-group;
   }
+
   h1 {
     display: none;
   }
-  /* Hide the Action column during print */
-  th:nth-child(7), /* Hides the Action header */
-  td:nth-child(7) {
-    /* Hides the Action cells */
-    display: none;
-  }
 
-  /* Keep borders for table, but remove borders around input fields during print */
+  /* Ensure all rows and columns have equal height and width */
   table,
   th,
   td {
-    border: 1px solid #000; /* Keeps the table borders */
+    border: 1px solid #000;
     border-collapse: collapse;
   }
 
-  /* Remove borders around input fields during print */
   input {
     border: none;
   }
 
-  /* Add border to the "Grand Total" section */
   tfoot td {
     border: 1px solid #000;
-    font-weight: bold; /* To highlight the Grand Total section */
-  }
-
-  /* Hide any extra columns */
-  th:nth-child(n+8), /* Hides any unexpected columns that might appear */
-  td:nth-child(n+8) {
-    display: none;
+    font-weight: bold;
   }
 }

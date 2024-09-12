@@ -8,7 +8,15 @@
   </head>
   <body>
     <div class="container">
-      <h1>Created By:Kavan Gami</h1>
+      <!-- Header section with date picker -->
+      <div class="header">
+        <div class="date-picker">
+          <label for="date">Date:</label>
+          <input type="date" id="date" />
+        </div>
+        <h1>Created By: Kavan Gami</h1>
+      </div>
+
       <h2>Botam Total</h2>
       <table>
         <thead>
@@ -19,20 +27,27 @@
             <th>C (13.50x)</th>
             <th>D (16.20x)</th>
             <th>Total</th>
-            <th>Action</th>
+            <th class="print-hide">Delete</th>
+            <!-- Hide the Delete column while printing -->
+            <!-- New columns only for print -->
+            <th class="print-only">Extra 1</th>
+            <th class="print-only">Extra 2</th>
           </tr>
         </thead>
         <tbody id="tableBody">
           <!-- Rows will be dynamically generated here -->
         </tbody>
-        <!-- New footer for the grand total -->
         <tfoot>
           <tr>
             <td colspan="5" style="text-align: right; font-weight: bold">
               Grand Total:
             </td>
             <td id="grandTotal">0.00</td>
-            <td></td>
+            <!-- Extra cells for print -->
+            <td class="print-hide"></td>
+            <!-- Hides delete column in print -->
+            <td class="print-only"></td>
+            <td class="print-only"></td>
           </tr>
         </tfoot>
       </table>
