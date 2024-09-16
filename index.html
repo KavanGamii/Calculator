@@ -12,13 +12,13 @@
       <div class="header">
         <!-- Move Date Picker and Theme Toggle to Left Side -->
         <div class="left-controls">
-          <button
+          <!-- <button
             onclick="toggleTheme()"
             class="theme-toggle print-hide"
             title="Switch Theme"
           >
             ☀️
-          </button>
+          </button> -->
           <div class="date-picker-container">
             <label for="date-picker">Date:</label>
             <input type="date" id="date-picker" />
@@ -27,53 +27,55 @@
       </div>
 
       <h2>Total</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>A (9.40x)</th>
-            <th>B (11.25x)</th>
-            <th>C (13.50x)</th>
-            <th>D (16.20x)</th>
-            <th>Total</th>
-            <th>Delete</th>
-            <!-- Extra columns for print only -->
-            <th class="print-only">Extra 1</th>
-            <th class="print-only">Extra 2</th>
-          </tr>
-        </thead>
-        <tbody id="tableBody">
-          <!-- Initial row example -->
-          <tr>
-            <td><input type="text" placeholder="Enter name" /></td>
-            <td><input type="number" placeholder="0" /></td>
-            <td><input type="number" placeholder="0" /></td>
-            <td><input type="number" placeholder="0" /></td>
-            <td><input type="number" placeholder="0" /></td>
-            <td class="total">0.00</td>
-            <td>
-              <button onclick="deleteRow(this)" class="print-hide">
-                Delete
-              </button>
-            </td>
-            <!-- Extra columns for print only -->
-            <td class="print-only"></td>
-            <td class="print-only"></td>
-          </tr>
-        </tbody>
-        <tfoot>
-          <tr>
-            <td colspan="5" style="text-align: right; font-weight: bold">
-              Grand Total:
-            </td>
-            <td id="grandTotal">0.00</td>
-            <td></td>
-            <!-- Extra columns for print only in footer -->
-            <td class="print-only"></td>
-            <td class="print-only"></td>
-          </tr>
-        </tfoot>
-      </table>
+      <div style="overflow: auto">
+        <table>
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>A (9.40x)</th>
+              <th>B (11.25x)</th>
+              <th>C (13.50x)</th>
+              <th>D (16.20x)</th>
+              <th>Total</th>
+              <th>Extra</th>
+              <!-- Extra columns for print only -->
+              <th class="print-only">Extra 1</th>
+              <th class="print-only">Extra 2</th>
+            </tr>
+          </thead>
+          <tbody id="tableBody">
+            <!-- Initial row example -->
+            <tr>
+              <td><input type="text" placeholder="Enter name" /></td>
+              <td><input type="number" placeholder="0" /></td>
+              <td><input type="number" placeholder="0" /></td>
+              <td><input type="number" placeholder="0" /></td>
+              <td><input type="number" placeholder="0" /></td>
+              <td class="total">0.00</td>
+              <td>
+                <button onclick="deleteRow(this)" class="print-hide">
+                  Delete
+                </button>
+              </td>
+              <!-- Extra columns for print only -->
+              <td class="print-only"></td>
+              <td class="print-only"></td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="5" style="text-align: right; font-weight: bold">
+                Grand Total:
+              </td>
+              <td id="grandTotal">0.00</td>
+              <td></td>
+              <!-- Extra columns for print only in footer -->
+              <td class="print-only"></td>
+              <td class="print-only"></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
 
       <!-- Buttons with print-hide class to hide during printing -->
       <button onclick="calculate()" class="calculate print-hide">

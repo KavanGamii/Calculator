@@ -9,12 +9,12 @@ function toggleTheme() {
     });
 
   // Change theme toggle icon
-  const themeToggle = document.querySelector('.theme-toggle');
-  if (document.body.classList.contains('dark')) {
-    themeToggle.textContent = '🌙'; // Moon icon for dark theme
-  } else {
-    themeToggle.textContent = '☀️'; // Sun icon for light theme
-  }
+  // const themeToggle = document.querySelector('.theme-toggle');
+  // if (document.body.classList.contains('dark')) {
+  //   themeToggle.textContent = '🌙'; // Moon icon for dark theme
+  // } else {
+  //   themeToggle.textContent = '☀️'; // Sun icon for light theme
+  // }
 }
 
 // Calculate totals for each row and the grand total
@@ -68,7 +68,54 @@ function deleteRow(button) {
   calculate(); // Recalculate total after deleting a row
 }
 
-// Print the page as PDF
+// Print the page as PDF with Gujarati translation
 function printPDF() {
+  translateToGujarati(); // Translate to Gujarati before printing
   window.print();
+  setTimeout(() => revertToOriginal(), 1000); // Revert to original text after printing
 }
+
+// Function to translate table content to Gujarati for printing
+function translateToGujarati() {
+  const header = document.querySelectorAll('th');
+  const footer = document.querySelectorAll('tfoot td');
+
+  // Translate table headers
+  header[0].textContent = 'નામ'; // Name
+  header[1].textContent = 'A (9.40x)';
+  header[2].textContent = 'B (11.25x)';
+  header[3].textContent = 'C (13.50x)';
+  header[4].textContent = 'D (16.20x)';
+  header[5].textContent = 'કુલ'; // Total
+  header[6].textContent = 'વધારાની'; // Delete
+  // Translate footer
+  footer[0].textContent = 'કુલ:'; // Grand Total
+}
+
+// Function to revert the translation after printing
+function revertToOriginal() {
+  const header = document.querySelectorAll('th');
+  const footer = document.querySelectorAll('tfoot td');
+
+  // Revert table headers to original
+  header[0].textContent = 'Name';
+  header[1].textContent = 'A (9.40x)';
+  header[2].textContent = 'B (11.25x)';
+  header[3].textContent = 'C (13.50x)';
+  header[4].textContent = 'D (16.20x)';
+  header[5].textContent = 'Total';
+  header[6].textContent = 'Delete';
+
+  // Revert footer
+  footer[0].textContent = 'Grand Total:';
+}
+
+// Listen for the print event to translate before printing
+window.onbeforeprint = function () {
+  translateToGujarati();
+};
+
+// Listen for the afterprint event to revert after printing
+window.onafterprint = function () {
+  revertToOriginal();
+};
