@@ -17,7 +17,7 @@
           <input type="date" id="date-picker" />
         </div>
         <div class="text-box-container">
-          <input class="new" type="text" id="text-box" placeholder="Enter text here" />
+          <input class="new" type="text" id="text-box" />
         </div>
       </div>
     </div>
@@ -30,6 +30,7 @@
       <label class="no-print" for="multiplierC">C:</label>
       <input class="no-print" type="number" id="multiplierC" value="13.5" step="0.01" />
     </div>
+
     <div class="main">
       <div class="table-container">
         <table>
@@ -51,24 +52,24 @@
               <td><input type="number" placeholder="0" /></td>
               <td><input type="number" placeholder="0" /></td>
               <td class="total">0.00</td>
-              <td>
-                <button onclick="deleteRow(this)" class="print-hide">Delete</button>
-              </td>
-              <td class="print-only"></td>
+              <td><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
+
             </tr>
           </tbody>
           <tfoot>
             <tr>
-              <td colspan="4" style="text-align: right; font-weight: bold">Grand Total:</td>
-              <td id="grandTotal">0.00</td>
-              <td></td>
-              <td class="print-only"></td>
+              <td colspan="1" style="text-align: right; font-weight: bold">Totals:</td>
+              <td id="totalA">0.00</td>
+              <td id="totalB">0.00</td>
+              <td id="totalC">0.00</td>
+              <td colspan="1" id="overallTotal">0.00</td>
+
             </tr>
           </tfoot>
         </table>
       </div>
     </div>
-    <button onclick="calculate()" class="calculate print-hide">Total</button>
+    <button onclick="calculate()" class="calculate print-hide">Calculate Totals</button>
     <button onclick="addRow()" class="add-row print-hide">Extra Row</button>
     <button onclick="printPDF()" class="print-pdf print-hide">PDF</button>
   </div>

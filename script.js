@@ -1,40 +1,35 @@
-// Toggle theme between light and dark
-function toggleTheme() {
-  document.body.classList.toggle('dark');
-  document.querySelector('.container').classList.toggle('dark');
-  document.querySelectorAll('table, th, td, button, .theme-toggle').forEach((element) => {
-    element.classList.toggle('dark');
-  });
-}
-
-// Calculate totals for each row and the grand total
 function calculate() {
   const rows = document.querySelectorAll('tbody tr');
-  let grandTotal = 0;
-
-  // Get multipliers from input fields
-  const multiplierA = parseFloat(document.getElementById('multiplierA').value) || 0;
-  const multiplierB = parseFloat(document.getElementById('multiplierB').value) || 0;
-  const multiplierC = parseFloat(document.getElementById('multiplierC').value) || 0;
+  let totalA = 0, totalB = 0, totalC = 0, grandTotal = 0;
 
   rows.forEach((row) => {
     const inputs = row.querySelectorAll('input[type="number"]');
-    let rowTotal = 0;
+    const valueA = parseFloat(inputs[0].value) || 0;
+    const valueB = parseFloat(inputs[1].value) || 0;
+    const valueC = parseFloat(inputs[2].value) || 0;
 
-    inputs.forEach((input, index) => {
-      const value = parseFloat(input.value) || 0;
-      if (index === 0) rowTotal += value * multiplierA; // Column A
-      else if (index === 1) rowTotal += value * multiplierB; // Column B
-      else if (index === 2) rowTotal += value * multiplierC; // Column C
-    });
+    // Calculate the row total based on multipliers
+    const rowTotal = (valueA * parseFloat(document.getElementById('multiplierA').value)) +
+      (valueB * parseFloat(document.getElementById('multiplierB').value)) +
+      (valueC * parseFloat(document.getElementById('multiplierC').value));
 
-    // Update total for this row
+    // Update the row total display
     row.querySelector('.total').textContent = rowTotal.toFixed(2);
+
+    // Accumulate totals for columns A, B, C and the grand total
+    totalA += valueA;
+    totalB += valueB;
+    totalC += valueC;
     grandTotal += rowTotal;
   });
 
-  // Update grand total
-  document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
+  // Update column totals
+  document.getElementById('totalA').textContent = totalA.toFixed(2);
+  document.getElementById('totalB').textContent = totalB.toFixed(2);
+  document.getElementById('totalC').textContent = totalC.toFixed(2);
+
+  // Update overall total for the total column
+  document.getElementById('overallTotal').textContent = grandTotal.toFixed(2);
 }
 
 // Add a new row to the table
@@ -49,8 +44,6 @@ function addRow() {
     <td><input type="number" placeholder="0" /></td>
     <td class="total">0.00</td>
     <td><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
-    <td class="print-only"></td>
-    <td class="print-only"></td>
   `;
 
   tableBody.appendChild(newRow);
