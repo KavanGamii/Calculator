@@ -251,3 +251,21 @@ button.dark {
     display: none !important;
   }
 }
+
+.text-box-container {
+  display: inline-block;
+  margin-left: 10px;
+  /* Adjust spacing between the date picker and the text box */
+}
+
+.text-box-container input {
+  font-size: 18px;
+  /* Set font size for the text box */
+  padding: 5px;
+  /* Optional: Add some padding for better appearance */
+}
+
+.left-controls {
+  width: 100%;
+  justify-content: space-between;
+}

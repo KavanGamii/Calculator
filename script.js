@@ -16,7 +16,6 @@ function calculate() {
   const multiplierA = parseFloat(document.getElementById('multiplierA').value) || 0;
   const multiplierB = parseFloat(document.getElementById('multiplierB').value) || 0;
   const multiplierC = parseFloat(document.getElementById('multiplierC').value) || 0;
-  const multiplierD = parseFloat(document.getElementById('multiplierD').value) || 0;
 
   rows.forEach((row) => {
     const inputs = row.querySelectorAll('input[type="number"]');
@@ -27,7 +26,6 @@ function calculate() {
       if (index === 0) rowTotal += value * multiplierA; // Column A
       else if (index === 1) rowTotal += value * multiplierB; // Column B
       else if (index === 2) rowTotal += value * multiplierC; // Column C
-      else if (index === 3) rowTotal += value * multiplierD; // Column D
     });
 
     // Update total for this row
@@ -46,7 +44,6 @@ function addRow() {
 
   newRow.innerHTML = `
     <td><input type="text" placeholder="Enter name" /></td>
-    <td><input type="number" placeholder="0" /></td>
     <td><input type="number" placeholder="0" /></td>
     <td><input type="number" placeholder="0" /></td>
     <td><input type="number" placeholder="0" /></td>
