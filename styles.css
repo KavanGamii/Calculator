@@ -14,56 +14,6 @@ body {
   min-height: 100vh;
   background-color: #f0f4f8;
   padding: 20px;
-  transition: background-color 0.3s, color 0.3s;
-  /* Smooth transition for theme change */
-}
-
-/* Header and date picker styling */
-.header {
-  display: flex;
-  justify-content: flex-start;
-  /* Align items to the left */
-  align-items: center;
-  width: 100%;
-  margin-bottom: 10px;
-}
-
-.left-controls {
-  display: flex;
-  align-items: center;
-}
-
-.date-picker-container {
-  font-size: 14px;
-  margin-left: 10px;
-  /* Space between theme button and date picker */
-}
-
-h1 {
-  font-size: 16px;
-  color: #333;
-  text-align: right;
-}
-
-/* Small circular button styling */
-.theme-toggle {
-  width: 30px;
-  height: 30px;
-  background-color: #f0f4f8;
-  color: #333;
-  border: 2px solid #333;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s, color 0.3s;
-}
-
-.theme-toggle:hover {
-  background-color: #333;
-  color: #f0f4f8;
-  transform: rotate(45deg);
 }
 
 /* Main container styling */
@@ -74,18 +24,64 @@ h1 {
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   width: 100%;
   max-width: 800px;
-  text-align: center;
-  overflow-x: auto;
-  transition: background-color 0.3s, color 0.3s;
-  /* Smooth transition for theme change */
+}
+
+/* Header and controls styling */
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.left-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.date-picker-container,
+.text-box-container {
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+
+.text-box-container input {
+  font-size: 18px;
+  padding: 5px;
+  min-width: 200px;
+  /* Minimum width for better UX */
+}
+
+/* Multiplier inputs */
+.multipliers {
+  margin-bottom: 20px;
+}
+
+.multipliers label {
+  margin-right: 5px;
+}
+
+.multipliers input {
+  width: 80px;
+  margin-right: 15px;
+}
+
+/* Table container for scroll */
+.table-container {
+
+  /* Enables horizontal scrolling */
+  margin-bottom: 20px;
+  width: 640px;
 }
 
 /* Table styling */
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 10px;
-  min-width: 600px;
 }
 
 th,
@@ -105,30 +101,15 @@ td input {
   width: 100%;
   padding: 4px;
   font-size: 12px;
-  text-align: center;
   border-radius: 4px;
   border: 1px solid #ddd;
 }
 
-/* Responsive Design */
-@media screen and (max-width: 600px) {
-  .container {
-    padding: 10px;
-    max-width: 100%;
-  }
-
-  table {
-    font-size: 12px;
-  }
-
-  th,
-  td {
-    padding: 6px;
-  }
-
-  td input {
-    font-size: 12px;
-  }
+/* Equal column sizes */
+th,
+td {
+  width: calc(100% / 8);
+  /* Adjust according to number of visible columns */
 }
 
 /* Button styling */
@@ -140,12 +121,9 @@ button {
   font-size: 14px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s;
   margin: 5px 0;
   width: 100%;
-  border: 2px solid #4caf50;
-  transition: 0.4s;
-  font-weight: 700;
 }
 
 button:hover {
@@ -153,63 +131,62 @@ button:hover {
   color: black;
 }
 
-/* Specific button styling */
-.add-row,
-.print-pdf {
-  width: 100%;
-  margin-top: 10px;
+/* Responsive Design */
+@media screen and (max-width: 768px) {
+  .left-controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .text-box-container {
+    width: 100%;
+  }
+
+  .multipliers {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .multipliers input {
+    margin-bottom: 10px;
+  }
+
+  table {
+    font-size: 12px;
+  }
+
+  th,
+  td {
+    padding: 6px;
+  }
+
+
 }
 
 /* Print-specific styles */
 @media print {
-
-  button,
-  .print-hide {
+  button {
     display: none;
+  }
+
+  .new {
+    border: 0px;
   }
 
   .print-only {
     display: table-cell;
-    border: 1px solid #000;
-    /* Ensures borders for extra columns during print */
   }
 
   td input {
     border: 1px transparent;
   }
 
-  tfoot {
-    display: table-footer-group;
-  }
-
-  h1 {
+  .no-print {
     display: none;
   }
-
-  /* Ensure all rows and columns have equal height and width */
-  table,
-  th,
-  td {
-    border: 1px solid #000;
-    border-collapse: collapse;
-  }
-
-  input {
-    border: none;
-  }
-
-  tfoot td {
-    border: 1px solid #000;
-    font-weight: bold;
-  }
 }
 
-/* Hide extra columns in normal view */
-.print-only {
-  display: none;
-}
-
-/* Improved Dark Theme Styles */
+/* Dark theme styles */
 body.dark {
   background-color: #1e1e2e;
   color: #e0e0e0;
@@ -218,11 +195,6 @@ body.dark {
 .container.dark {
   background-color: #2e2e3a;
   color: #e0e0e0;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
-}
-
-table.dark {
-  color: #e0e0e0;
 }
 
 th.dark,
@@ -230,42 +202,6 @@ td.dark {
   border-color: #3a3a4a;
 }
 
-th.dark {
-  background-color: #3a3a4a;
-}
-
-button.dark {
-  background-color: #3a3a4a;
-  color: #e0e0e0;
-  border-color: #4a4a5a;
-}
-
-.theme-toggle.dark {
-  background-color: #4a4a5a;
-  color: #e0e0e0;
-  border-color: #5a5a6a;
-}
-
-@media print {
-  .no-print {
-    display: none !important;
-  }
-}
-
-.text-box-container {
-  display: inline-block;
-  margin-left: 10px;
-  /* Adjust spacing between the date picker and the text box */
-}
-
-.text-box-container input {
-  font-size: 18px;
-  /* Set font size for the text box */
-  padding: 5px;
-  /* Optional: Add some padding for better appearance */
-}
-
-.left-controls {
-  width: 100%;
-  justify-content: space-between;
+.main {
+  overflow-x: auto;
 }
