@@ -99,10 +99,9 @@ th {
 
 td input {
   width: 100%;
-  padding: 4px;
-  font-size: 12px;
-  border-radius: 4px;
-  border: 1px solid #ddd;
+  padding: 0px;
+  font-size: 16px;
+  border: 1px solid transparent;
   text-align: center;
 }
 
@@ -132,6 +131,18 @@ button:hover {
   color: black;
 }
 
+.dp {
+  display: none;
+}
+
+.bl {
+  display: none;
+}
+
+.comman {
+  font-size: 18px;
+}
+
 /* Responsive Design */
 @media screen and (max-width: 768px) {
   .left-controls {
@@ -150,6 +161,7 @@ button:hover {
 
   .multipliers input {
     margin-bottom: 10px;
+    width: 80%;
   }
 
   table {
@@ -158,11 +170,11 @@ button:hover {
 
   th,
   td {
-    padding: 6px;
+    padding: 0px;
   }
 
-  .dp {
-    display: none;
+  tfoot tr td {
+    padding: 10px;
   }
 }
 
@@ -190,6 +202,10 @@ button:hover {
 
   .no-print {
     display: none;
+  }
+
+  body {
+    align-items: start;
   }
 }
 

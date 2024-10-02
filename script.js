@@ -38,11 +38,11 @@ function addRow() {
   const newRow = document.createElement('tr');
 
   newRow.innerHTML = `
-    <td><input type="text" placeholder="Enter name" /></td>
-    <td><input type="number" placeholder="0" /></td>
-    <td><input type="number" placeholder="0" /></td>
-    <td><input type="number" placeholder="0" /></td>
-    <td class="total">0.00</td>
+    <td><input type="text"/></td>
+    <td><input type="number"/></td>
+    <td><input type="number"/></td>
+    <td><input type="number"/></td>
+    <td class="total"></td>
     <td><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
   `;
 
