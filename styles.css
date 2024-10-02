@@ -161,7 +161,9 @@ button:hover {
     padding: 6px;
   }
 
-
+  .dp {
+    display: none;
+  }
 }
 
 /* Print-specific styles */
@@ -180,6 +182,10 @@ button:hover {
 
   td input {
     border: 1px transparent;
+  }
+
+  .dpv {
+    display: block;
   }
 
   .no-print {
