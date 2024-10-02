@@ -14,13 +14,15 @@ body {
   min-height: 100vh;
   background-color: #f0f4f8;
   padding: 20px;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+  transition: background-color 0.3s, color 0.3s;
+  /* Smooth transition for theme change */
 }
 
 /* Header and date picker styling */
 .header {
   display: flex;
-  justify-content: flex-start; /* Align items to the left */
+  justify-content: flex-start;
+  /* Align items to the left */
   align-items: center;
   width: 100%;
   margin-bottom: 10px;
@@ -33,7 +35,8 @@ body {
 
 .date-picker-container {
   font-size: 14px;
-  margin-left: 10px; /* Space between theme button and date picker */
+  margin-left: 10px;
+  /* Space between theme button and date picker */
 }
 
 h1 {
@@ -73,7 +76,8 @@ h1 {
   max-width: 800px;
   text-align: center;
   overflow-x: auto;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for theme change */
+  transition: background-color 0.3s, color 0.3s;
+  /* Smooth transition for theme change */
 }
 
 /* Table styling */
@@ -158,6 +162,7 @@ button:hover {
 
 /* Print-specific styles */
 @media print {
+
   button,
   .print-hide {
     display: none;
@@ -165,7 +170,8 @@ button:hover {
 
   .print-only {
     display: table-cell;
-    border: 1px solid #000; /* Ensures borders for extra columns during print */
+    border: 1px solid #000;
+    /* Ensures borders for extra columns during print */
   }
 
   td input {
