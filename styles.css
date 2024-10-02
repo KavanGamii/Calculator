@@ -245,3 +245,9 @@ button.dark {
   color: #e0e0e0;
   border-color: #5a5a6a;
 }
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+}

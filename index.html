@@ -10,22 +10,25 @@
 
 <body>
   <div class="container">
-    <!-- Header section for date picker and theme switcher -->
     <div class="header">
-      <!-- Move Date Picker and Theme Toggle to Left Side -->
       <div class="left-controls">
-        <!-- <button
-            onclick="toggleTheme()"
-            class="theme-toggle print-hide"
-            title="Switch Theme"
-          >
-            ☀️
-          </button> -->
         <div class="date-picker-container">
           <label for="date-picker">Date:</label>
           <input type="date" id="date-picker" />
         </div>
       </div>
+    </div>
+
+    <h2>Set Multipliers</h2>
+    <div>
+      <label class="no-print" for="multiplierA">Multiplier A:</label>
+      <input class="no-print" type="number" id="multiplierA" value="9.4" step="0.01" />
+      <label class="no-print" for="multiplierB">Multiplier B:</label>
+      <input class="no-print" type="number" id="multiplierB" value="11.25" step="0.01" />
+      <label class="no-print" for="multiplierC">Multiplier C:</label>
+      <input class="no-print" type="number" id="multiplierC" value="13.5" step="0.01" />
+      <label class="no-print" for="multiplierD">Multiplier D:</label>
+      <input class="no-print" type="number" id="multiplierD" value="16.2" step="0.01" />
     </div>
 
     <h2>Total</h2>
@@ -34,19 +37,17 @@
         <thead>
           <tr>
             <th>Name</th>
-            <th>A (9.40x)</th>
-            <th>B (11.25x)</th>
-            <th>C (13.50x)</th>
-            <th>D (16.20x)</th>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
             <th>Total</th>
             <th>Extra</th>
-            <!-- Extra columns for print only -->
             <th class="print-only">Extra 1</th>
             <th class="print-only">Extra 2</th>
           </tr>
         </thead>
         <tbody id="tableBody">
-          <!-- Initial row example -->
           <tr>
             <td><input type="text" placeholder="Enter name" /></td>
             <td><input type="number" placeholder="0" /></td>
@@ -55,23 +56,17 @@
             <td><input type="number" placeholder="0" /></td>
             <td class="total">0.00</td>
             <td>
-              <button onclick="deleteRow(this)" class="print-hide">
-                Delete
-              </button>
+              <button onclick="deleteRow(this)" class="print-hide">Delete</button>
             </td>
-            <!-- Extra columns for print only -->
             <td class="print-only"></td>
             <td class="print-only"></td>
           </tr>
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="5" style="text-align: right; font-weight: bold">
-              Grand Total:
-            </td>
+            <td colspan="5" style="text-align: right; font-weight: bold">Grand Total:</td>
             <td id="grandTotal">0.00</td>
             <td></td>
-            <!-- Extra columns for print only in footer -->
             <td class="print-only"></td>
             <td class="print-only"></td>
           </tr>
@@ -79,14 +74,9 @@
       </table>
     </div>
 
-    <!-- Buttons with print-hide class to hide during printing -->
-    <button onclick="calculate()" class="calculate print-hide">
-      Evaluate Now
-    </button>
+    <button onclick="calculate()" class="calculate print-hide">Evaluate Now</button>
     <button onclick="addRow()" class="add-row print-hide">Add Row</button>
-    <button onclick="printPDF()" class="print-pdf print-hide">
-      Print as PDF
-    </button>
+    <button onclick="printPDF()" class="print-pdf print-hide">Print as PDF</button>
   </div>
   <script src="script.js"></script>
 </body>
