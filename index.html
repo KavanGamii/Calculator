@@ -1,85 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Data Calculator</title>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <div class="container">
-    <div class="header">
-      <div class="left-controls">
-        <div class="text-box-container">
-          <input style="font-weight: 700;" class="new" type="text" id="text-box" />
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="left-controls">
+          <div class="text-box-container">
+            <input
+              style="font-weight: 700"
+              class="new"
+              type="text"
+              id="text-box"
+            />
+          </div>
+          <div class="date-picker-container">
+            <input type="date" id="date-picker" />
+          </div>
         </div>
-        <div class="date-picker-container">
-          <input type="date" id="date-picker" />
+      </div>
+
+      <div class="multipliers">
+        <div>
+          <label class="no-print" for="multiplierA">A:</label>
+          <input
+            class="no-print comman"
+            type="number"
+            id="multiplierA"
+            value="9.4"
+            step="0.01"
+          />
         </div>
-
+        <div>
+          <label class="no-print" for="multiplierB">B:</label>
+          <input
+            class="no-print comman"
+            type="number"
+            id="multiplierB"
+            value="11.25"
+            step="0.01"
+          />
+        </div>
+        <div>
+          <label class="no-print" for="multiplierC">C:</label>
+          <input
+            class="no-print comman"
+            type="number"
+            id="multiplierC"
+            value="13.5"
+            step="0.01"
+          />
+        </div>
       </div>
+
+      <div class="main">
+        <div class="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>Total</th>
+                <th>Extra</th>
+                <th>Extra</th>
+              </tr>
+            </thead>
+            <tbody id="tableBody">
+              <tr>
+                <td><input type="text" /></td>
+                <td><input type="number" /></td>
+                <td><input type="number" /></td>
+                <td><input type="number" /></td>
+                <td class="total"></td>
+                <td>
+                  <button onclick="deleteRow(this)" class="print-hide">
+                    Delete
+                  </button>
+                </td>
+                <td rowspan="100">
+                  <input type="number" class="dp dpv" />
+                </td>
+                <!-- Fill the extra column with an input -->
+              </tr>
+            </tbody>
+
+            <tfoot>
+              <tr>
+                <td colspan="1" style="font-weight: bold">Totals:</td>
+                <td id="totalA"></td>
+                <td id="totalB"></td>
+                <td id="totalC"></td>
+                <td colspan="1" id="overallTotal"></td>
+                <td></td>
+                <!-- Extra column -->
+                <td></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+      <button onclick="calculate()" class="calculate print-hide">Totals</button>
+      <button onclick="addRow()" class="add-row print-hide">Extra Row</button>
+      <button onclick="printPDF()" class="print-pdf print-hide">PDF</button>
     </div>
-
-    <div class="multipliers">
-      <div>
-        <label class="no-print" for="multiplierA">A:</label>
-        <input class="no-print comman" type="number" id="multiplierA" value="9.4" step="0.01" />
-      </div>
-      <div>
-        <label class="no-print" for="multiplierB">B:</label>
-        <input class="no-print comman" type="number" id="multiplierB" value="11.25" step="0.01" />
-      </div>
-      <div>
-        <label class="no-print" for="multiplierC">C:</label>
-        <input class="no-print comman" type="number" id="multiplierC" value="13.5" step="0.01" />
-      </div>
-    </div>
-
-    <div class="main">
-      <div class="table-container">
-        <table>
-          <thead>
-            <tr>
-              <th>Name</th>
-              <th>A</th>
-              <th>B</th>
-              <th>C</th>
-              <th>Total</th>
-              <th>Extra</th>
-              <th>Extra</th>
-            </tr>
-          </thead>
-          <tbody id="tableBody">
-            <tr>
-              <td><input type="text" /></td>
-              <td><input type="number" /></td>
-              <td><input type="number" /></td>
-              <td><input type="number" /></td>
-              <td class="total"></td>
-              <td><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
-              <td><input type="number" class="dp dpv" /></td> <!-- Add this input -->
-            </tr>
-          </tbody>
-          <tfoot>
-            <tr>
-              <td colspan="1" style="font-weight: bold">Totals:</td>
-              <td id="totalA"></td>
-              <td id="totalB"></td>
-              <td id="totalC"></td>
-              <td colspan="1" id="overallTotal"></td>
-
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-    <button onclick="calculate()" class="calculate print-hide">Totals</button>
-    <button onclick="addRow()" class="add-row print-hide">Extra Row</button>
-    <button onclick="printPDF()" class="print-pdf print-hide">PDF</button>
-  </div>
-  <script src="script.js"></script>
-</body>
-
+    <script src="script.js"></script>
+  </body>
 </html>
