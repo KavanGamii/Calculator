@@ -72,7 +72,6 @@ body {
 
 /* Table container for scroll */
 .table-container {
-
   /* Enables horizontal scrolling */
   margin-bottom: 20px;
   width: 630px;
@@ -206,6 +205,9 @@ button:hover {
 
   body {
     align-items: start;
+  }
+  .date-picker-container input {
+    border: none;
   }
 }
 
