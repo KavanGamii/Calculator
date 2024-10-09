@@ -78,7 +78,10 @@
                 <td><input type="number" /></td>
                 <td><input type="number" /></td>
                 <td><input type="number" /></td>
-                <td class="total"></td>
+                <td class="total">
+                  <input type="text" oninput="calculate()" />
+                </td>
+
                 <td>
                   <button onclick="deleteRow(this)" class="print-hide">
                     Delete
