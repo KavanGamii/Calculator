@@ -92,8 +92,15 @@ td {
 }
 
 th {
-  background-color: #415256;
-  color: #d7d7d7;
+  background-image: linear-gradient(
+    to right,
+    #314755 0%,
+    #26a0da 51%,
+    #314755 100%
+  );
+  color: white;
+  box-shadow: 0 0 20px #eee;
+  background-size: 200% auto;
 }
 
 td input {
@@ -113,8 +120,13 @@ td {
 
 /* Button styling */
 button {
-  background-color: #415256;
-  color: #d7d7d7;
+  background-image: linear-gradient(
+    to right,
+    #314755 0%,
+    #26a0da 51%,
+    #314755 100%
+  );
+  color: white;
   padding: 10px 20px;
   font-size: 14px;
   cursor: pointer;
@@ -122,14 +134,24 @@ button {
   transition: all ease-in-out 0.5s;
   margin: 5px 0;
   width: 100%;
-  border: 2px solid #415256;
+  border: 2px solid transparent;
   font-weight: 600;
+  box-shadow: 0 0 20px #eee;
+  text-transform: uppercase;
+  background-size: 200% auto;
 }
 
-button:hover {
+/*button:hover {
   border-radius: 10px;
   background: transparent;
   color: #415256;
+  display: block;
+} */
+
+button:hover {
+  background-position: right center; /* change the direction of the change here */
+  color: #fff;
+  text-decoration: none;
 }
 
 .dp {
@@ -176,6 +198,9 @@ button:hover {
 
   tfoot tr td {
     padding: 10px;
+  }
+  th {
+    padding: 6px;
   }
 }
 
