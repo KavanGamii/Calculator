@@ -11,6 +11,7 @@ function debounce(func, wait) {
   };
 }
 
+// Function to calculate row total and overall total
 function calculate() {
   const rows = document.querySelectorAll('tbody tr');
   let totalA = 0,
@@ -23,43 +24,31 @@ function calculate() {
     const valueA = parseFloat(inputs[0].value) || 0;
     const valueB = parseFloat(inputs[1].value) || 0;
     const valueC = parseFloat(inputs[2].value) || 0;
+    const totalInput = row.querySelector('.total input');
 
-    // Calculate the row total only if all inputs A, B, and C are filled
-    if (valueA !== 0 || valueB !== 0 || valueC !== 0) {
+    // Check if the total field was manually updated
+    if (!totalInput.dataset.manual) {
       const calculatedRowTotal =
         valueA * parseFloat(document.getElementById('multiplierA').value) +
         valueB * parseFloat(document.getElementById('multiplierB').value) +
         valueC * parseFloat(document.getElementById('multiplierC').value);
 
-      const totalCell = row.querySelector('.total input');
-
-      // If total cell is empty, set it to calculated value
-      if (totalCell.value === '') {
-        totalCell.value = calculatedRowTotal.toFixed(2);
-      }
-
-      // Only use the calculated total if the total field is empty
-      if (totalCell.value === '' || parseFloat(totalCell.value) !== 0) {
-        totalCell.value = calculatedRowTotal.toFixed(2);
-      }
-
-      // Update dataset for the calculated total
-      totalCell.dataset.calculated = totalCell.value; // Store current total
-
-      // Accumulate totals for columns A, B, C and grand total
-      totalA += valueA;
-      totalB += valueB;
-      totalC += valueC;
-      grandTotal += parseFloat(totalCell.value) || 0; // Use the input value for grand total
+      totalInput.value = calculatedRowTotal.toFixed(2);
     }
+
+    // Accumulate totals for A, B, C and the overall total
+    totalA += valueA;
+    totalB += valueB;
+    totalC += valueC;
+    grandTotal += parseFloat(totalInput.value) || 0; // Sum total from the input (manual or calculated)
   });
 
-  // Update column totals
+  // Update bottom totals row
   document.getElementById('totalA').textContent = totalA.toFixed(2);
   document.getElementById('totalB').textContent = totalB.toFixed(2);
   document.getElementById('totalC').textContent = totalC.toFixed(2);
 
-  // Update overall total for the total column
+  // Set grand total in the totals row
   document.getElementById('overallTotal').textContent = grandTotal.toFixed(2);
 }
 
@@ -76,18 +65,37 @@ function addRow() {
       <td><input type="number" oninput="debouncedCalculate()"/></td>
       <td><input type="number" oninput="debouncedCalculate()"/></td>
       <td><input type="number" oninput="debouncedCalculate()"/></td>
-      <td class="total"><input type="text" placeholder="" oninput="debouncedCalculate()" /></td>
+      <td class="total"><input type="text" oninput="manualTotal(this)" placeholder="" /></td>
       <td><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
   `;
 
   tableBody.appendChild(newRow);
+
+  // Attach event listeners to the new inputs
+  newRow
+    .querySelectorAll('input[type="number"]')
+    .forEach((input) => input.addEventListener('input', debouncedCalculate));
+}
+
+// Function to handle manual entry in the "Total" column
+function manualTotal(input) {
+  input.dataset.manual = true; // Set flag indicating manual input
+  debouncedCalculate(); // Recalculate overall totals
+}
+
+// Reset manual total when A, B, or C is updated
+function resetManualTotal(input) {
+  const row = input.closest('tr');
+  const totalInput = row.querySelector('.total input');
+  totalInput.dataset.manual = ''; // Clear manual flag
+  debouncedCalculate(); // Recalculate the row and overall totals
 }
 
 // Delete a row from the table
 function deleteRow(button) {
   const row = button.parentElement.parentElement;
   row.remove();
-  calculate(); // Recalculate total after deleting a row
+  debouncedCalculate(); // Recalculate total after deleting a row
 }
 
 // Print the page as PDF
