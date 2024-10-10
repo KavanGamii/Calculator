@@ -236,6 +236,12 @@ button:hover {
   .date-picker-container input {
     border: none;
   }
+  .container {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: none;
+  }
 }
 
 /* Dark theme styles */
