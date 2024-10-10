@@ -109,6 +109,6 @@ document
   .forEach((input) => {
     input.addEventListener('input', debouncedCalculate);
   });
-
-// Attach event listener to the Total button
-document.getElementById('totalButton').addEventListener('click', calculate);
+window.addEventListener('beforeunload', (event) => {
+  event.preventDefault();
+});
