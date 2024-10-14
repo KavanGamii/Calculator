@@ -17,6 +17,8 @@ function calculate() {
   let totalA = 0,
     totalB = 0,
     totalC = 0,
+    autoTotal = 0,
+    manualTotal = 0,
     grandTotal = 0;
 
   rows.forEach((row) => {
@@ -27,29 +29,36 @@ function calculate() {
     const totalInput = row.querySelector('.total input');
 
     // Check if the total field was manually updated
-    if (!totalInput.dataset.manual) {
+    if (totalInput.dataset.manual === 'true') {
+      manualTotal += parseFloat(totalInput.value) || 0;
+    } else {
       const calculatedRowTotal =
         valueA * parseFloat(document.getElementById('multiplierA').value) +
         valueB * parseFloat(document.getElementById('multiplierB').value) +
         valueC * parseFloat(document.getElementById('multiplierC').value);
 
       totalInput.value = calculatedRowTotal.toFixed(2);
+      autoTotal += calculatedRowTotal;
     }
 
-    // Accumulate totals for A, B, C and the overall total
+    // Accumulate totals for A, B, C
     totalA += valueA;
     totalB += valueB;
     totalC += valueC;
-    grandTotal += parseFloat(totalInput.value) || 0; // Sum total from the input (manual or calculated)
   });
 
-  // Update bottom totals row
+  // Update bottom totals row for A, B, C
   document.getElementById('totalA').textContent = totalA.toFixed(2);
   document.getElementById('totalB').textContent = totalB.toFixed(2);
   document.getElementById('totalC').textContent = totalC.toFixed(2);
 
-  // Set grand total in the totals row
-  document.getElementById('overallTotal').textContent = grandTotal.toFixed(2);
+  // Set auto and manual totals
+  document.getElementById('autoTotal').textContent = autoTotal.toFixed(2);
+  document.getElementById('manualTotal').textContent = manualTotal.toFixed(2);
+
+  // Set grand total (sum of auto and manual totals)
+  grandTotal = autoTotal + manualTotal;
+  document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
 }
 
 // Debounced calculate function
@@ -79,7 +88,7 @@ function addRow() {
 
 // Function to handle manual entry in the "Total" column
 function manualTotal(input) {
-  input.dataset.manual = true; // Set flag indicating manual input
+  input.dataset.manual = 'true'; // Set flag indicating manual input
   debouncedCalculate(); // Recalculate overall totals
 }
 
@@ -109,6 +118,3 @@ document
   .forEach((input) => {
     input.addEventListener('input', debouncedCalculate);
   });
-window.addEventListener('beforeunload', (event) => {
-  event.preventDefault();
-});

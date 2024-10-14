@@ -75,22 +75,22 @@
             <tbody id="tableBody">
               <tr>
                 <td><input type="text" /></td>
-                <td><input type="number" /></td>
-                <td><input type="number" /></td>
-                <td><input type="number" /></td>
+                <td><input type="number" oninput="debouncedCalculate()" /></td>
+                <td><input type="number" oninput="debouncedCalculate()" /></td>
+                <td><input type="number" oninput="debouncedCalculate()" /></td>
                 <td class="total">
-                  <input type="text" oninput="calculate()" />
+                  <input
+                    type="text"
+                    oninput="manualTotal(this)"
+                    placeholder=""
+                  />
                 </td>
-
                 <td>
                   <button onclick="deleteRow(this)" class="print-hide">
                     Delete
                   </button>
                 </td>
-                <td rowspan="100">
-                  <input type="number" class="dp dpv" />
-                </td>
-                <!-- Fill the extra column with an input -->
+                <td rowspan="100"><input type="number" class="dp dpv" /></td>
               </tr>
             </tbody>
 
@@ -100,23 +100,28 @@
                 <td id="totalA"></td>
                 <td id="totalB"></td>
                 <td id="totalC"></td>
-                <td colspan="1" id="overallTotal"></td>
+                <td id="autoTotal"></td>
                 <td></td>
-                <!-- Extra column -->
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4" style="font-weight: bold">Fix Pagar Total:</td>
+                <td id="manualTotal"></td>
+                <td></td>
+                <td></td>
+              </tr>
+              <tr>
+                <td colspan="4" style="font-weight: bold">Grand Total:</td>
+                <td id="grandTotal"></td>
+                <td></td>
                 <td></td>
               </tr>
             </tfoot>
           </table>
         </div>
       </div>
-      <!-- <button
-        id="totalButton"
-        onclick="calculate()"
-        class="calculate print-hide"
-      >
-        Totals
-      </button> -->
-      <button onclick="addRow()" class="add-row print-hide">Extra Row</button>
+
+      <button onclick="addRow()" class="add-row print-hide">EXTRA ROW</button>
       <button onclick="printPDF()" class="print-pdf print-hide">PDF</button>
     </div>
     <script src="script.js"></script>
