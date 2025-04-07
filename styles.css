@@ -1,266 +1,349 @@
-/* General reset for margins and paddings */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Modern CSS Reset and Variables */
+@media screen {
+  :root {
+    --primary-color: #4f46e5;
+    --primary-hover: #4338ca;
+    --background: #f8fafc;
+    --card-bg: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --border-color: #e2e8f0;
+    --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --radius: 0.75rem;
+  }
 
-/* Styling for the body */
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #f0f4f8;
-  padding: 20px;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-/* Main container styling */
-.container {
-  background-color: #ffffff;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 800px;
-}
-
-/* Header and controls styling */
-.header {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.left-controls {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  width: 100%;
-}
-
-.date-picker-container,
-.text-box-container {
-  margin-right: 10px;
-  margin-bottom: 10px;
-}
-
-.text-box-container input {
-  font-size: 18px;
-  padding: 5px;
-  min-width: 200px;
-  /* Minimum width for better UX */
-}
-
-/* Multiplier inputs */
-.multipliers {
-  margin-bottom: 20px;
-}
-
-.multipliers label {
-  margin-right: 5px;
-}
-
-.multipliers input {
-  width: 80px;
-  margin-right: 15px;
-}
-
-/* Table container for scroll */
-.table-container {
-  /* Enables horizontal scrolling */
-  margin-bottom: 20px;
-  width: 630px;
-}
-
-/* Table styling */
-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-
-th,
-td {
-  padding: 8px;
-  border: 1px solid #ddd;
-  text-align: center;
-  font-size: 14px;
-}
-
-th {
-  background-image: linear-gradient(
-    to right,
-    #314755 0%,
-    #26a0da 51%,
-    #314755 100%
-  );
-  color: white;
-  box-shadow: 0 0 20px #eee;
-  background-size: 200% auto;
-}
-
-td input {
-  width: 100%;
-  padding: 0px;
-  font-size: 16px;
-  border: 1px solid transparent;
-  text-align: center;
-}
-
-/* Equal column sizes */
-th,
-td {
-  width: calc(100% / 8);
-  /* Adjust according to number of visible columns */
-}
-
-/* Button styling */
-button {
-  background-image: linear-gradient(
-    to right,
-    #314755 0%,
-    #26a0da 51%,
-    #314755 100%
-  );
-  color: white;
-  padding: 10px 20px;
-  font-size: 14px;
-  cursor: pointer;
-  border-radius: 5px;
-  transition: all ease-in-out 0.5s;
-  margin: 5px 0;
-  width: 100%;
-  border: 2px solid transparent;
-  font-weight: 600;
-  box-shadow: 0 0 20px #eee;
-  text-transform: uppercase;
-  background-size: 200% auto;
-}
-
-/*button:hover {
-  border-radius: 10px;
-  background: transparent;
-  color: #415256;
-  display: block;
-} */
-
-button:hover {
-  background-position: right center; /* change the direction of the change here */
-  color: #fff;
-  text-decoration: none;
-}
-
-.dp {
-  display: none;
-}
-
-.bl {
-  display: none;
-}
-
-.comman {
-  font-size: 18px;
-}
-
-/* Responsive Design */
-@media screen and (max-width: 768px) {
-  .left-controls {
-    flex-direction: column;
+  /* Modern Body Styling */
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.5;
+    padding: 2rem;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
     align-items: flex-start;
   }
 
-  .text-box-container {
+  /* Container Styling */
+  .container {
+    background-color: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 2rem;
     width: 100%;
+    max-width: 1000px;
   }
 
+  /* Header Styling */
+  .header {
+    margin-bottom: 2rem;
+  }
+
+  .left-controls {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 1rem;
+  }
+
+  /* Input Styling */
+  input[type="text"],
+  input[type="number"],
+  input[type="date"] {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    transition: border-color 0.15s ease;
+    outline: none;
+  }
+
+  input[type="text"]:focus,
+  input[type="number"]:focus,
+  input[type="date"]:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+
+  /* Multipliers Section */
   .multipliers {
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background-color: #f8fafc;
+    border-radius: var(--radius);
+  }
+
+  .multipliers div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .multipliers label {
+    font-weight: 500;
+    color: var(--text-secondary);
   }
 
   .multipliers input {
-    margin-bottom: 10px;
-    width: 80%;
+    width: 100px;
+  }
+
+  /* Table Styling */
+  .table-container {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 2rem;
+    border-radius: var(--radius);
+    border: 1px solid var(--border-color);
   }
 
   table {
-    font-size: 12px;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
   }
 
-  th,
-  td {
-    padding: 0px;
-  }
-
-  tfoot tr td {
-    padding: 10px;
-  }
   th {
-    padding: 6px;
-  }
-}
-
-/* Print-specific styles */
-@media print {
-  button {
-    display: none;
-  }
-
-  .new {
-    border: 0px;
+    background-color: #f8fafc;
+    color: var(--text-primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
   }
 
-  .print-only {
-    display: table-cell;
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+  }
+
+  tr:last-child td {
+    border-bottom: none;
   }
 
   td input {
-    border: 1px transparent;
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid transparent;
+    border-radius: 0.375rem;
+    text-align: left;
+  }
+
+  td input:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+  }
+
+  /* Button Styling */
+  button {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-transform: none;
+    font-size: 0.875rem;
+    box-shadow: none;
+  }
+
+  button:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-1px);
+  }
+
+  button.print-hide {
+    background-color: #ef4444;
+  }
+
+  button.print-hide:hover {
+    background-color: #dc2626;
+  }
+
+  .add-row {
+    margin-right: 1rem;
+  }
+
+  /* Footer Totals */
+  tfoot td {
+    font-weight: 600;
+    background-color: #f8fafc;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    body {
+      padding: 1rem;
+    }
+
+    .container {
+      padding: 1rem;
+    }
+
+    .left-controls {
+      grid-template-columns: 1fr;
+    }
+
+    .multipliers {
+      grid-template-columns: 1fr;
+      padding: 1rem;
+    }
+
+    th,
+    td {
+      padding: 0.75rem;
+    }
+
+    button {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+  }
+
+  /* Dark Mode */
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --background: #0f172a;
+      --card-bg: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #94a3b8;
+      --border-color: #334155;
+    }
+
+    input[type="text"],
+    input[type="number"],
+    input[type="date"] {
+      background-color: #334155;
+      color: var(--text-primary);
+    }
+
+    .multipliers,
+    th,
+    tfoot td {
+      background-color: #1e293b;
+    }
+  }
+}
+
+/* Print/PDF Styles - Clean and Simple */
+@media print {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    background: white;
+    font-family: Arial, sans-serif;
+    padding: 0;
+    color: black;
+    margin: 0;
+  }
+
+  .container {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0;
+    box-shadow: none;
+  }
+
+  /* Hide multipliers section in print */
+  .multipliers {
+    display: none;
+  }
+
+  /* Compact header styling */
+  .header {
+    margin-bottom: 10px;
+  }
+
+  .header-row {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .header-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .header-item span {
+    white-space: nowrap;
+  }
+
+  .header-item input {
+    width: auto;
+    min-width: 150px;
+    border: none;
+    padding: 0;
+  }
+
+  input[type="date"] {
+    min-width: 100px;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+  }
+
+  th, td {
+    border: 1px solid #000;
+    padding: 4px;
+    text-align: center;
+  }
+
+  th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+
+  input {
+    border: none;
+    text-align: center;
+    width: 100%;
+    font-family: inherit;
+  }
+
+  .no-print,
+  .print-hide,
+  .multipliers label,
+  .multipliers input {
+    display: none;
   }
 
   .dpv {
     display: block;
   }
 
-  .no-print {
+  tfoot td {
+    font-weight: bold;
+    background-color: #f0f0f0;
+  }
+
+  /* Hide any decorative elements */
+  button,
+  .actions {
     display: none;
   }
-
-  body {
-    align-items: start;
-  }
-  .date-picker-container input {
-    border: none;
-  }
-  .container {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 15px;
-    box-shadow: none;
-  }
-}
-
-/* Dark theme styles */
-body.dark {
-  background-color: #1e1e2e;
-  color: #e0e0e0;
-}
-
-.container.dark {
-  background-color: #2e2e3a;
-  color: #e0e0e0;
-}
-
-th.dark,
-td.dark {
-  border-color: #3a3a4a;
-}
-
-.main {
-  overflow-x: auto;
-}
-/* done */
+} 
