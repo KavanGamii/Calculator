@@ -37,7 +37,7 @@ function calculate() {
         valueB * parseFloat(document.getElementById('multiplierB').value) +
         valueC * parseFloat(document.getElementById('multiplierC').value);
 
-      totalInput.value = calculatedRowTotal.toFixed(2);
+      totalInput.value = Math.round(calculatedRowTotal);
       autoTotal += calculatedRowTotal;
     }
 
@@ -48,17 +48,17 @@ function calculate() {
   });
 
   // Update bottom totals row for A, B, C
-  document.getElementById('totalA').textContent = totalA.toFixed(2);
-  document.getElementById('totalB').textContent = totalB.toFixed(2);
-  document.getElementById('totalC').textContent = totalC.toFixed(2);
+  document.getElementById('totalA').textContent = Math.round(totalA);
+  document.getElementById('totalB').textContent = Math.round(totalB);
+  document.getElementById('totalC').textContent = Math.round(totalC);
 
   // Set auto and manual totals
-  document.getElementById('autoTotal').textContent = autoTotal.toFixed(2);
-  document.getElementById('manualTotal').textContent = manualTotal.toFixed(2);
+  document.getElementById('autoTotal').textContent = Math.round(autoTotal);
+  document.getElementById('manualTotal').textContent = Math.round(manualTotal);
 
   // Set grand total (sum of auto and manual totals)
   grandTotal = autoTotal + manualTotal;
-  document.getElementById('grandTotal').textContent = grandTotal.toFixed(2);
+  document.getElementById('grandTotal').textContent = Math.round(grandTotal);
 }
 
 // Debounced calculate function
@@ -112,9 +112,16 @@ function printPDF() {
   window.print();
 }
 
+// Add multiple rows to the table
+function addMultipleRows(count) {
+  for (let i = 0; i < count; i++) {
+    addRow();
+  }
+}
+
 // Attach the debounced function to all relevant input fields
 document
   .querySelectorAll('input[type="number"], .total input')
   .forEach((input) => {
     input.addEventListener('input', debouncedCalculate);
-  });
+  }); 
