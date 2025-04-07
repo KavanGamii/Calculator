@@ -5,21 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Calculator</title>
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   </head>
 
   <body>
     <div class="container">
       <div class="header">
-        <div class="left-controls">
-          <div class="text-box-container">
-            <input
-              style="font-weight: 700"
-              class="new"
-              type="text"
-              id="text-box"
-            />
+        <div class="header-row">
+          <div class="header-item">
+            <span>Description:</span>
+            <input type="text" id="text-box" class="new" placeholder="Enter description..." />
           </div>
-          <div class="date-picker-container">
+          <div class="header-item">
+            <span>Date:</span>
             <input type="date" id="date-picker" />
           </div>
         </div>
@@ -27,33 +25,33 @@
 
       <div class="multipliers">
         <div>
-          <label class="no-print" for="multiplierA">A:</label>
+          <label for="multiplierA">Multiplier A</label>
           <input
-            class="no-print comman"
             type="number"
             id="multiplierA"
             value="9.4"
             step="0.01"
+            class="no-print"
           />
         </div>
         <div>
-          <label class="no-print" for="multiplierB">B:</label>
+          <label for="multiplierB">Multiplier B</label>
           <input
-            class="no-print comman"
             type="number"
             id="multiplierB"
             value="11.25"
             step="0.01"
+            class="no-print"
           />
         </div>
         <div>
-          <label class="no-print" for="multiplierC">C:</label>
+          <label for="multiplierC">Multiplier C</label>
           <input
-            class="no-print comman"
             type="number"
             id="multiplierC"
             value="13.5"
             step="0.01"
+            class="no-print"
           />
         </div>
       </div>
@@ -63,57 +61,57 @@
           <table>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>A</th>
-                <th>B</th>
-                <th>C</th>
-                <th>Total</th>
-                <th>Extra</th>
-                <th>Extra</th>
+                <th scope="col">Name</th>
+                <th scope="col">A</th>
+                <th scope="col">B</th>
+                <th scope="col">C</th>
+                <th scope="col">Total</th>
+                <th scope="col" class="no-print">Actions</th>
+                <th scope="col">Extra</th>
               </tr>
             </thead>
             <tbody id="tableBody">
               <tr>
-                <td><input type="text" /></td>
-                <td><input type="number" oninput="debouncedCalculate()" /></td>
-                <td><input type="number" oninput="debouncedCalculate()" /></td>
-                <td><input type="number" oninput="debouncedCalculate()" /></td>
+                <td><input type="text" placeholder="Enter name..." /></td>
+                <td><input type="number" oninput="debouncedCalculate()" placeholder="0" /></td>
+                <td><input type="number" oninput="debouncedCalculate()" placeholder="0" /></td>
+                <td><input type="number" oninput="debouncedCalculate()" placeholder="0" /></td>
                 <td class="total">
                   <input
                     type="text"
                     oninput="manualTotal(this)"
-                    placeholder=""
+                    placeholder="0.00"
                   />
                 </td>
-                <td>
-                  <button onclick="deleteRow(this)" class="print-hide">
+                <td class="no-print">
+                  <button onclick="deleteRow(this)" class="print-hide" title="Delete row">
                     Delete
                   </button>
                 </td>
-                <td rowspan="100"><input type="number" class="dp dpv" /></td>
+                <td><input type="number" class="dp dpv" placeholder="0" /></td>
               </tr>
             </tbody>
 
             <tfoot>
               <tr>
-                <td colspan="1" style="font-weight: bold">Totals:</td>
-                <td id="totalA"></td>
-                <td id="totalB"></td>
-                <td id="totalC"></td>
-                <td id="autoTotal"></td>
-                <td></td>
-                <td></td>
-              </tr>
-              <tr>
-                <td colspan="4" style="font-weight: bold">Fix Pagar Total:</td>
-                <td id="manualTotal"></td>
-                <td></td>
+                <td colspan="1">Totals:</td>
+                <td id="totalA">0.00</td>
+                <td id="totalB">0.00</td>
+                <td id="totalC">0.00</td>
+                <td id="autoTotal">0.00</td>
+                <td class="no-print"></td>
                 <td></td>
               </tr>
               <tr>
-                <td colspan="4" style="font-weight: bold">Grand Total:</td>
-                <td id="grandTotal"></td>
+                <td colspan="4">Fix Pagar Total:</td>
+                <td id="manualTotal">0.00</td>
+                <td class="no-print"></td>
                 <td></td>
+              </tr>
+              <tr>
+                <td colspan="4">Grand Total:</td>
+                <td id="grandTotal">0.00</td>
+                <td class="no-print"></td>
                 <td></td>
               </tr>
             </tfoot>
@@ -121,9 +119,12 @@
         </div>
       </div>
 
-      <button onclick="addRow()" class="add-row print-hide">EXTRA ROW</button>
-      <button onclick="printPDF()" class="print-pdf print-hide">PDF</button>
+      <div class="actions">
+        <button onclick="addRow()" class="add-row print-hide">Add Row</button>
+        <button onclick="addMultipleRows(10)" class="add-row print-hide">Add 10 Rows</button>
+        <button onclick="printPDF()" class="print-pdf print-hide">Generate PDF</button>
+      </div>
     </div>
     <script src="script.js"></script>
   </body>
-</html>
+</html> 
