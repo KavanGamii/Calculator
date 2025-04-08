@@ -347,6 +347,7 @@
     display: none;
   }
 } 
-td:first-child input, td:nth-child(2) input, td:nth-child(3) input, td:nth-child(4) input {
+td:first-child input, td:nth-child(2) input, td:nth-child(3) input, td:nth-child(4) input  {
     min-width: 80px;
 }
+td:nth-child(5) input  {    min-width: 100px;}
