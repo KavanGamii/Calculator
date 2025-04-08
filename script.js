@@ -75,7 +75,8 @@ function addRow() {
       <td><input type="number" oninput="debouncedCalculate()"/></td>
       <td><input type="number" oninput="debouncedCalculate()"/></td>
       <td class="total"><input type="text" oninput="manualTotal(this)" placeholder="" /></td>
-      <td><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
+      <td class="no-print"><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
+      <td><input type="number" class="dp dpv" /></td>
   `;
 
   tableBody.appendChild(newRow);
@@ -112,11 +113,53 @@ function printPDF() {
   window.print();
 }
 
-// Add multiple rows to the table
+// Add predefined data rows
+function addPredefinedRows() {
+  const predefinedData = [
+    { name: "Mashi", total: "1700" },
+    { name: "Jamadar", total: "1380" },
+    { name: "Kanubhai", total: "900" },
+    { name: "Mahesh", total: "1250" },
+    
+  ];
+
+  const tableBody = document.getElementById('tableBody');
+  tableBody.innerHTML = ''; // Clear existing rows
+
+  predefinedData.forEach(data => {
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td><input type="text" value="${data.name}" /></td>
+      <td><input type="number" oninput="debouncedCalculate()"/></td>
+      <td><input type="number" oninput="debouncedCalculate()"/></td>
+      <td><input type="number" oninput="debouncedCalculate()"/></td>
+      <td class="total"><input type="text" value="${data.total}" oninput="manualTotal(this)" data-manual="true" /></td>
+      <td class="no-print"><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
+      <td><input type="number" class="dp dpv" /></td>
+    `;
+    tableBody.appendChild(newRow);
+  });
+
+  // Calculate totals after adding all rows
+  debouncedCalculate();
+}
+
+// Add multiple empty rows
 function addMultipleRows(count) {
   for (let i = 0; i < count; i++) {
-    addRow();
+    const newRow = document.createElement('tr');
+    newRow.innerHTML = `
+      <td><input type="text"  /></td>
+      <td><input type="number" oninput="debouncedCalculate()"/></td>
+      <td><input type="number" oninput="debouncedCalculate()"/></td>
+      <td><input type="number" oninput="debouncedCalculate()"/></td>
+      <td class="total"><input type="text" oninput="manualTotal(this)" /></td>
+      <td class="no-print"><button onclick="deleteRow(this)" class="print-hide">Delete</button></td>
+      <td><input type="number" class="dp dpv" /></td>
+    `;
+    document.getElementById('tableBody').appendChild(newRow);
   }
+  debouncedCalculate();
 }
 
 // Attach the debounced function to all relevant input fields
@@ -124,4 +167,9 @@ document
   .querySelectorAll('input[type="number"], .total input')
   .forEach((input) => {
     input.addEventListener('input', debouncedCalculate);
-  }); 
+  });
+
+// Load predefined rows when the page initializes
+document.addEventListener('DOMContentLoaded', function() {
+  addPredefinedRows();
+}); 
