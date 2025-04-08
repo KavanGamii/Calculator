@@ -73,14 +73,14 @@
             <tbody id="tableBody">
               <tr>
                 <td><input type="text" placeholder="Enter name..." /></td>
-                <td><input type="number" oninput="debouncedCalculate()" placeholder="0" /></td>
-                <td><input type="number" oninput="debouncedCalculate()" placeholder="0" /></td>
-                <td><input type="number" oninput="debouncedCalculate()" placeholder="0" /></td>
+                <td><input type="number" oninput="debouncedCalculate()"/></td>
+                <td><input type="number" oninput="debouncedCalculate()" /></td>
+                <td><input type="number" oninput="debouncedCalculate()"/></td>
                 <td class="total">
                   <input
                     type="text"
                     oninput="manualTotal(this)"
-                    placeholder="0.00"
+                    
                   />
                 </td>
                 <td class="no-print">
@@ -88,7 +88,7 @@
                     Delete
                   </button>
                 </td>
-                <td><input type="number" class="dp dpv" placeholder="0" /></td>
+                <td><input type="number" class="dp dpv" /></td>
               </tr>
             </tbody>
 
